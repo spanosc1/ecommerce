@@ -17,6 +17,16 @@ router.get('/', function(req, res, next) {
 	});
 });
 
+router.get('/product/:id', function(req, res, next) {
+	var productId = req.params.id;
+	Product.findById(productId, function(err, product) {
+		if(err) {
+			return res.redirect('/');
+		}
+		res.render('shop/item', { product: product});
+	})
+});
+
 router.get('/add-to-cart/:id', function(req, res, next) {
 	var productId = req.params.id;
 	var cart = new Cart(req.session.cart ? req.session.cart : {});

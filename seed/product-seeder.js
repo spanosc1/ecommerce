@@ -24,7 +24,7 @@ var products = [
 		price: 40
 	}),
 	new Product({
-		imagepath: 'https://www.mariowiki.com/images/thumb/4/42/SSBWiiU_NA_Boxart.png/150px-SSBWiiU_NA_Boxart.png',
+		imagePath: 'https://www.mariowiki.com/images/thumb/4/42/SSBWiiU_NA_Boxart.png/150px-SSBWiiU_NA_Boxart.png',
 		title: 'Super Smash Bros. for Wii U and 3DS',
 		description: 'Smash Bros. for Wii U and 3DS',
 		price: 50
