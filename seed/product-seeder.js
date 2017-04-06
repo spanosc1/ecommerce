@@ -6,28 +6,40 @@ mongoose.connect('localhost:27017/shoes');
 
 var products = [
 	new Product({
-		imagePath: 'https://upload.wikimedia.org/wikipedia/en/f/f0/Castlevania_Lords_of_Shadow.png',
-		title: 'Castlevania: Lords of Shadow',
-		description: 'Castlevania for ps3/xbox 360',
-		price: 20
+		imagePath: '/images/closingceremony.jpg',
+		title: 'AIR JORDAN 11 RETRO LOW "CLOSING CEREMONY"',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor ligula a congue euismod. Integer cursus, arcu in scelerisque consequat, lacus lectus lacinia est, in dapibus ligula risus sit amet neque. Aenean faucibus nibh vel volutpat accumsan. Morbi placerat egestas egestas. Ut fringilla imperdiet eleifend. Etiam ut lacinia lectus. Fusce dictum non enim id vehicula.',
+		price: 225
 	}),
 	new Product({
-		imagePath: 'https://upload.wikimedia.org/wikipedia/en/0/0e/BreathoftheWildFinalCover.jpg',
-		title: 'The Legend of Zelda: Breath of the Wild',
-		description: 'The Legend of Zelda for Wii U/Switch',
-		price: 60
+		imagePath: '/images/alternate89.jpg',
+		title: 'AIR JORDAN 4 RETRO "ALTERNATE 89"',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor ligula a congue euismod. Integer cursus, arcu in scelerisque consequat, lacus lectus lacinia est, in dapibus ligula risus sit amet neque. Aenean faucibus nibh vel volutpat accumsan. Morbi placerat egestas egestas. Ut fringilla imperdiet eleifend. Etiam ut lacinia lectus. Fusce dictum non enim id vehicula.',
+		price: 225
 	}),
 	new Product({
-		imagePath: 'http://cdn.bulbagarden.net/upload/thumb/0/06/Sun_EN_boxart.png/250px-Sun_EN_boxart.png',
-		title: 'Pokemon: Sun',
-		description: 'Pokemon for 3DS',
-		price: 40
+		imagePath: '/images/aqua2015.jpg',
+		title: 'AIR JORDAN 8 RETRO "AQUA 2015"',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor ligula a congue euismod. Integer cursus, arcu in scelerisque consequat, lacus lectus lacinia est, in dapibus ligula risus sit amet neque. Aenean faucibus nibh vel volutpat accumsan. Morbi placerat egestas egestas. Ut fringilla imperdiet eleifend. Etiam ut lacinia lectus. Fusce dictum non enim id vehicula.',
+		price: 200
 	}),
 	new Product({
-		imagePath: 'https://www.mariowiki.com/images/thumb/4/42/SSBWiiU_NA_Boxart.png/150px-SSBWiiU_NA_Boxart.png',
-		title: 'Super Smash Bros. for Wii U and 3DS',
-		description: 'Smash Bros. for Wii U and 3DS',
-		price: 50
+		imagePath: '/images/closingceremony.jpg',
+		title: 'AIR JORDAN 11 fdsa LOW "CLOSING CEREMONY"',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor ligula a congue euismod. Integer cursus, arcu in scelerisque consequat, lacus lectus lacinia est, in dapibus ligula risus sit amet neque. Aenean faucibus nibh vel volutpat accumsan. Morbi placerat egestas egestas. Ut fringilla imperdiet eleifend. Etiam ut lacinia lectus. Fusce dictum non enim id vehicula.',
+		price: 225
+	}),
+	new Product({
+		imagePath: '/images/alternate89.jpg',
+		title: 'AIR JORDAN 4 RETRO "ALTERNATE 89"',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor ligula a congue euismod. Integer cursus, arcu in scelerisque consequat, lacus lectus lacinia est, in dapibus ligula risus sit amet neque. Aenean faucibus nibh vel volutpat accumsan. Morbi placerat egestas egestas. Ut fringilla imperdiet eleifend. Etiam ut lacinia lectus. Fusce dictum non enim id vehicula.',
+		price: 225
+	}),
+	new Product({
+		imagePath: '/images/aqua2015.jpg',
+		title: 'AIR JORDAN 8 RETRO "AQUA 2015"',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor ligula a congue euismod. Integer cursus, arcu in scelerisque consequat, lacus lectus lacinia est, in dapibus ligula risus sit amet neque. Aenean faucibus nibh vel volutpat accumsan. Morbi placerat egestas egestas. Ut fringilla imperdiet eleifend. Etiam ut lacinia lectus. Fusce dictum non enim id vehicula.',
+		price: 200
 	})
 ];
 

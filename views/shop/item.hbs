@@ -1,5 +1,12 @@
-
-	<h1>{{ product.title }}</h1>
-	<h4>{{ product.description }}</h2>
-	<img src="{{ product.imagePath }}"></a>
-	<p>{{ product.price }}</p>
+<div class="row">
+	<div class="col-md-6 col-sm-12">
+		<img id="productPageImage" src="{{ product.imagePath }}"></img>
+	</div>
+	<div class="col-md-6 col-sm-12">
+		<h1>{{ product.title }}</h1>
+		<p>{{ product.description }}</p>
+		
+		<p>{{ product.price }}</p>
+		<a class="btn btn-success" href="/add-to-cart/{{ product._id }}" role="button">Add to Cart</a>
+	</div>
+</div>

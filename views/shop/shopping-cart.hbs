@@ -3,17 +3,12 @@
 		<div class="col-sm-12 col-md-12">
 			<ul class="list-group">
 				{{# each products}}
-					<li class="list-group-item">
+					<li class="list-group-item clearfix">
 						<span class="badge">{{ this.qty }}</span>
-						<strong>{{ this.item.title }}</strong>
-						<span class="label label-success">${{ this.price }}</span>
-						<div class="btn-group">
-							<button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">Options<span class="caret"></span></button>
-							<ul class="dropdown-menu">
-								<li><a href="#">Remove 1</a></li>
-								<li><a href="#">Remove All</a></li>
-							</ul>
-						</div>
+						<strong class="pull-left">{{ this.item.title }}</strong>
+						<span id="price" class="label label-success pull-right">${{ this.price }}</span>
+						<button class="btn btn-info btn-xs pull-right" href="#">Remove 1</button>
+						<button class="btn btn-info btn-xs pull-right" href="#">Remove All</button>
 					</li>
 				{{/each}}
 			</ul>
@@ -34,6 +29,7 @@
 <div class="row">
 	<div class="col-sm-12 col-md-12">
 		<h2>No Items in Cart.</h2>
+		<a href="/" class="btn btn-success">Shop</a>
 	</div>
 </div>
 {{/if}}

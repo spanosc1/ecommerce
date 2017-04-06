@@ -9,6 +9,8 @@
 .title {
 	height: 50px;
 	text-align: center;
+	font-size: 14px;
+	vertical-align: middle;
 }
 
 .price {
@@ -18,4 +20,16 @@
 
 .productLink:hover {
 	text-decoration: none;
+}
+
+.btn, .label {
+	margin: 2px;
+}
+
+#price {
+	margin-left: 20px;
+}
+
+#productPageImage {
+	max-width: 100%;
 }
