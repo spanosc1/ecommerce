@@ -10,15 +10,19 @@ router.get('/', function(req, res, next) {
 	Product.find(function(err, docs) {
 		var productChunks = [];
 		var chunkSize = 4;
-		for(var i = 0; i < docs.length; i += chunkSize) {
-			productChunks.push(docs.slice(i, i + chunkSize));
+		var newDocs = [];
+		for(var j = 0; j < docs.length; j ++)
+		{
+			newDocs.push({item: docs[j]});
+		}
+		for(var i = 0; i < newDocs.length; i += chunkSize) {
+			productChunks.push(newDocs.slice(i, i + chunkSize));
 		}
 		res.render('shop/index', { title: 'ecommerce', products: productChunks });
 	});
 });
 
 router.get('/search/:term*?', function(req, res, next) {
-	console.log(req.params.term.indexOf("+"));
 	if(req.params.term.indexOf("+") >= 0)
 	{
 		var terms = req.params.term.split("+");
@@ -31,24 +35,29 @@ router.get('/search/:term*?', function(req, res, next) {
 		var productChunks = [];
 		var foundDocs = [];
 		var chunkSize = 4;
-		var found = false;
+		var found = 0;
 		var title;
 		for(var j = 0; j < docs.length; j ++)
 		{
 			title = docs[j].title.toLowerCase();
-			found = false;
+			found = 0;
 			for(var k = 0; k < terms.length; k ++)
 			{
 				if(title.includes(terms[k]))
 				{
-					found = true;
+					found++;
 				}
 			}
-			if(found)
+			if(found > 0)
 			{
-				foundDocs.push(docs[j]);
+				foundDocs.push({item: docs[j], foundTerms: found});
 			}
 		}
+		foundDocs.sort(function(a, b) {
+			if(b.foundTerms < a.foundTerms) return -1;
+			if(b.foundTerms > a.foundTerms) return 1;
+			return 0;
+		});
 		for(var i = 0; i < foundDocs.length; i += chunkSize) {
 			productChunks.push(foundDocs.slice(i, i + chunkSize));
 		}
