@@ -15,53 +15,10 @@ router.get('/', function(req, res, next) {
 		{
 			newDocs.push({item: docs[j]});
 		}
-		for(var i = 0; i < newDocs.length; i += chunkSize) {
+		/*for(var i = 0; i < newDocs.length; i += chunkSize) {
 			productChunks.push(newDocs.slice(i, i + chunkSize));
-		}
-		res.render('shop/index', { title: 'ecommerce', products: productChunks });
-	});
-});
-
-router.get('/search/:term*?', function(req, res, next) {
-	if(req.params.term.indexOf("+") >= 0)
-	{
-		var terms = req.params.term.split("+");
-	}
-	else
-	{
-		var terms = [req.params.term];
-	}
-	Product.find(function(err, docs) {
-		var productChunks = [];
-		var foundDocs = [];
-		var chunkSize = 4;
-		var found = 0;
-		var title;
-		for(var j = 0; j < docs.length; j ++)
-		{
-			title = docs[j].title.toLowerCase();
-			found = 0;
-			for(var k = 0; k < terms.length; k ++)
-			{
-				if(title.includes(terms[k]))
-				{
-					found++;
-				}
-			}
-			if(found > 0)
-			{
-				foundDocs.push({item: docs[j], foundTerms: found});
-			}
-		}
-		foundDocs.sort(function(a, b) {
-			if(b.foundTerms < a.foundTerms) return -1;
-			if(b.foundTerms > a.foundTerms) return 1;
-			return 0;
-		});
-		for(var i = 0; i < foundDocs.length; i += chunkSize) {
-			productChunks.push(foundDocs.slice(i, i + chunkSize));
-		}
-		res.render('shop/index', { title: 'ecommerce', products: productChunks });
+		}*/
+		res.render('shop/index', { title: 'ecommerce', products: newDocs });
 	});
 });
 
@@ -88,6 +45,24 @@ router.get('/add-to-cart/:id', function(req, res, next) {
 		console.log(req.session.cart);
 		res.redirect('/');
 	});
+});
+
+router.get('/reduce/:id', function(req, res, next) {
+	var productId = req.params.id;
+	var cart = new Cart(req.session.cart ? req.session.cart : {});
+
+	cart.reduceByOne(productId);
+	req.session.cart = cart;
+	res.redirect('/shopping-cart');
+});
+
+router.get('/remove/:id', function(req, res, next) {
+	var productId = req.params.id;
+	var cart = new Cart(req.session.cart ? req.session.cart : {});
+
+	cart.removeItem(productId);
+	req.session.cart = cart;
+	res.redirect('/shopping-cart');
 });
 
 router.get('/shopping-cart', function(req, res, next) {

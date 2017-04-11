@@ -15,7 +15,27 @@
 	  src="https://code.jquery.com/jquery-1.12.4.min.js"
 	  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
 	  crossorigin="anonymous"></script>
-    <script src="javascripts/logic.js" type="text/javascript"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      function searchFunction() { 
+        var input, filter, ul, li, a, i;
+        input = $("#searchTerm");
+        filter = input.val().toUpperCase();
+        ul = $(".itemList");
+        li = $(".item");
+        for (i = 0; i < li.length; i++)
+        {
+          titles = li[i].getElementsByTagName("a")[0].getElementsByTagName("p")[0];
+          if(titles.innerHTML.toUpperCase().indexOf(filter) > -1)
+          {
+            li[i].style.display = "";
+          }
+          else
+          {
+            li[i].style.display = "none";
+          }
+        }
+      }
+    </script>
   </body>
 </html>

@@ -7,8 +7,8 @@
 						<span class="badge">{{ this.qty }}</span>
 						<strong class="pull-left">{{ this.item.title }}</strong>
 						<span id="price" class="label label-success pull-right">${{ this.price }}</span>
-						<button class="btn btn-info btn-xs pull-right" href="#">Remove 1</button>
-						<button class="btn btn-info btn-xs pull-right" href="#">Remove All</button>
+						<a class="btn btn-info btn-xs pull-right" href="/reduce/{{this.item._id}}">Remove 1</a>
+						<a class="btn btn-info btn-xs pull-right" href="/remove/{{this.item._id}}">Remove All</a>
 					</li>
 				{{/each}}
 			</ul>
