@@ -15,9 +15,6 @@ router.get('/', function(req, res, next) {
 		{
 			newDocs.push({item: docs[j]});
 		}
-		/*for(var i = 0; i < newDocs.length; i += chunkSize) {
-			productChunks.push(newDocs.slice(i, i + chunkSize));
-		}*/
 		res.render('shop/index', { title: 'ecommerce', products: newDocs });
 	});
 });

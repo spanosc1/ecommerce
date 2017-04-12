@@ -15,6 +15,25 @@ router.get('/logout', isLoggedIn, function(req, res, next) {
 	res.redirect('/');
 });
 
+router.get('/admin', notLoggedIn, function(req, res, next) {
+	res.render('admin/login');
+});
+
+router.get('/admin/signin', function(req, res, next) {
+	var messages = req.flash('error');
+	res.render('admin/signin', {csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0});
+});
+
+router.post('/admin/signin', passport.authenticate('local.admin', {
+	successRedirect: '/admin/add-products',
+	failureRedirect: '/admin/signin',
+	failureFlash: true
+}));
+
+router.post('/admin/add-products', isLoggedIn, function(req, res, next) {
+	res.render('/admin/add-products');
+})
+
 router.use('/', notLoggedIn, function(req, res, next) {
 	next();
 });
