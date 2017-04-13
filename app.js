@@ -14,6 +14,7 @@ var MongoStore = require('connect-mongo')(session);
 
 var routes = require('./routes/index');
 var userRoutes = require('./routes/user');
+var adminRoutes = require('./routes/admin');
 
 var app = express();
 
@@ -52,6 +53,7 @@ app.use(function(req, res, next) {
 //More specific routes first.  More/of/these/go/first.
 app.use('/user', userRoutes);
 app.use('/', routes);
+app.use('/', adminRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

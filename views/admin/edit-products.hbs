@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="col-md-6 col-sm-12">
+		<form id="upload" enctype="multipart/form-data" action="/admin/add-product" method="post">
+			<div class="form-group">
+				<label for="prodName">Name</label>
+				<input type="text" id="prodName" name="prodName" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="prodDesc">Description</label>
+				<textarea type="text" id="prodDesc" name="prodDesc" class="form-control" rows="6"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="prodPrice">Price</label>
+				<input type="text" id="prodPrice" name="prodPrices" class="form-control">
+			</div>
+			<input type="file" name="userPhoto" />
+			<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+			<button type="submit" class="btn btn-primary">Submit Item</button>
+			<span id = "status"></span>
+			<br>
+			<img id="preview" src="">
+		</form>
+	</div>
+</div>

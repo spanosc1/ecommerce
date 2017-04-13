@@ -14,9 +14,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <form class="navbar-form navbar-left" id="myForm" action="/">
-          <input id="searchTerm" autocomplete="off" onkeyup="searchFunction()" type="text" class="form-control" placeholder="Search">
+         <input id="searchTerm" autocomplete="off" onkeyup="searchFunction()" type="text" class="form-control" placeholder="Search">
       </form>
       <ul class="nav navbar-nav navbar-right">
+        <li id="admin"></li>
         <li>
           <a href="/shopping-cart">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart
@@ -24,7 +25,7 @@
           </a>
         </li>
         <li class="dropdown">
-          <input type="hidden" id="userEmail" value="{{session.email}}"/>
+          <input type="hidden" id="userEmail" value="{{session.email}}" login="{{login}}"/>
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> 
           {{# if login}}
             {{session.email}}

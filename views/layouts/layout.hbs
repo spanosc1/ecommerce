@@ -16,8 +16,31 @@
 	  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
 	  crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
     <script type="text/javascript">
-      function searchFunction() { 
+      $("#upload").submit(function() {
+        $("#status").empty().text("File is uploading");
+        $(this).ajaxSubmit({
+          error: function(xhr) {
+            status('Error: ' + xhr.status);
+          },
+          success: function(response) {
+            console.log(response);
+            $("#status").empty().text("Uploaded successfully");
+            $("#preview").attr("src", "./../../images/" + response);
+          }
+        });
+        return false;
+      });
+      if($("#userEmail").val() == "admin@gmail.com" && $("#userEmail").attr("login"))
+      {
+        $("#admin").html("<a href='/admin/edit-products'>Add or remove items (ADMIN)</a>");
+      }
+      else
+      {
+        $("#admin").html("");
+      }    
+      function searchFunction() {
         var input, filter, ul, li, a, i;
         input = $("#searchTerm");
         filter = input.val().toUpperCase();
