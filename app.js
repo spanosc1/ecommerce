@@ -52,8 +52,8 @@ app.use(function(req, res, next) {
 
 //More specific routes first.  More/of/these/go/first.
 app.use('/user', userRoutes);
+app.use('/admin', adminRoutes);
 app.use('/', routes);
-app.use('/', adminRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

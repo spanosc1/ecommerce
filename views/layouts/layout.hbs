@@ -32,6 +32,7 @@
         });
         return false;
       });
+
       if($("#userEmail").val() == "admin@gmail.com" && $("#userEmail").attr("login"))
       {
         $("#admin").html("<a href='/admin/edit-products'>Add or remove items (ADMIN)</a>");
@@ -39,7 +40,32 @@
       else
       {
         $("#admin").html("");
-      }    
+      }
+
+      $(".edit").hover(
+        function() {
+          $(this).animate({
+            opacity: 0.6
+          }, 200);
+          $(this).find(".editIcon").animate({
+            opacity: 1.0
+          }, 200);
+        },
+        function() {
+          $(this).animate({
+            opacity: 1.0
+          }, 200);
+          $(this).find(".editIcon").animate({
+            opacity: 0.0
+          }, 200);
+        }
+      );
+
+      $(".edit").on("click", function() {
+        //find children with the info (title, description, price, id)
+        //and set them to the ones in the modal for editing
+      });
+
       function searchFunction() {
         var input, filter, ul, li, a, i;
         input = $("#searchTerm");

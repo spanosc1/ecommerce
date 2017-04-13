@@ -21,4 +21,63 @@
 			<img id="preview" src="">
 		</form>
 	</div>
+	<div class="col-md-6 col-sm-12">
+		{{# each products}}
+			<div class="row thumbnail">
+				<div class="edit" data-toggle="modal" data-target="#myModal">
+					<i class="fa fa-pencil-square-o fa-2x editIcon" aria-hidden="true">Edit</i>
+					<div class="col-md-4 col-sm-6">
+						<img class="adminImg" src="{{this.item.imagePath}}">
+					</div>
+					<div class="col-md-8 col-sm-6">
+						<p class="title">{{this.item.title}}</p>
+						<p class="description">{{this.item.description}}</p>
+						<p class="price">{{this.item.price}}</p>
+						<input type="hidden" id="prodId" value="{{ this.item._id }}">
+					</div>
+				</div>
+			</div>
+		{{/each}}
+	</div>
 </div>
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <form id="update" enctype="multipart/form-data" action="/admin/update-product" method="post">
+						<div class="form-group">
+							<label for="newProdName">Name</label>
+							<input type="text" id="newProdName" name="newProdName" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="newProdDesc">Description</label>
+							<textarea type="text" id="newProdDesc" name="newProdDesc" class="form-control" rows="6"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="newProdPrice">Price</label>
+							<input type="text" id="newProdPrice" name="newProdPrices" class="form-control">
+						</div>
+						<input type="file" name="userPhoto" />
+						<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+						<input type="hidden" name="_id" value="">
+						<button type="submit" class="btn btn-primary">Submit Item</button>
+						<span id = "status"></span>
+						<br>
+						<img id="preview" src="">
+					</form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>

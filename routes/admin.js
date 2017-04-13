@@ -21,11 +21,20 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage }).single('userPhoto');
 
-router.get('/admin/edit-products', isAdmin, function(req, res, next) {
-	res.render('admin/edit-products');
+router.get('/edit-products', isAdmin, function(req, res, next) {
+	Product.find(function(err, docs) {
+		var productChunks = [];
+		var chunkSize = 4;
+		var newDocs = [];
+		for(var j = 0; j < docs.length; j ++)
+		{
+			newDocs.push({item: docs[j]});
+		}
+		res.render('admin/edit-products', { title: 'ecommerce', products: newDocs });
+	});
 });
 
-router.post('/admin/add-product', isAdmin, function(req, res, next) {
+router.post('/add-product', isAdmin, function(req, res, next) {
 	upload(req, res, function(err) {
 		if(err) {
 			return res.send(err);
