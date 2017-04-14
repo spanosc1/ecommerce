@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-6 col-sm-12">
-		<form id="upload" enctype="multipart/form-data" action="/admin/add-product" method="post">
+		<form class="upload" enctype="multipart/form-data" action="/admin/add-product" method="post">
 			<div class="form-group">
 				<label for="prodName">Name</label>
 				<input type="text" id="prodName" name="prodName" class="form-control">
@@ -15,29 +15,35 @@
 			</div>
 			<input type="file" name="userPhoto" />
 			<input type="hidden" name="_csrf" value="{{ csrfToken }}">
-			<button type="submit" class="btn btn-primary">Submit Item</button>
-			<span id = "status"></span>
+			<button type="submit" class="btn btn-success">Submit Item</button>
+			<span class="status"></span>
 			<br>
 			<img id="preview" src="">
 		</form>
 	</div>
 	<div class="col-md-6 col-sm-12">
-		{{# each products}}
-			<div class="row thumbnail">
-				<div class="edit" data-toggle="modal" data-target="#myModal">
-					<i class="fa fa-pencil-square-o fa-2x editIcon" aria-hidden="true">Edit</i>
-					<div class="col-md-4 col-sm-6">
-						<img class="adminImg" src="{{this.item.imagePath}}">
-					</div>
-					<div class="col-md-8 col-sm-6">
-						<p class="title">{{this.item.title}}</p>
-						<p class="description">{{this.item.description}}</p>
-						<p class="price">{{this.item.price}}</p>
-						<input type="hidden" id="prodId" value="{{ this.item._id }}">
+		{{# if products}}
+			{{# each products}}
+				<div class="row thumbnail">
+					<div class="edit" data-toggle="modal" data-target="#myModal">
+						<div class="col-md-4 col-sm-6">
+							<img class="adminImg" src="{{this.item.imagePath}}">
+						</div>
+						<div class="col-md-8 col-sm-6 shrink">
+							<p class="title">{{this.item.title}}</p>
+							<p class="description">{{this.item.description}}</p>
+							<p class="price">{{this.item.price}}</p>
+							<p class="prodId">{{this.item._id}}</p>
+							<i class="fa fa-pencil-square-o fa-2x editIcon" aria-hidden="true">Edit</i>
+						</div>
 					</div>
 				</div>
+			{{/each}}
+		{{ else }}
+			<div class="row">
+				<h2>No Items</h2>
 			</div>
-		{{/each}}
+		{{/if}}
 	</div>
 </div>
 
@@ -49,10 +55,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">Edit</h4>
         </div>
         <div class="modal-body">
-          <form id="update" enctype="multipart/form-data" action="/admin/update-product" method="post">
+          <form class="upload" enctype="multipart/form-data" action="/admin/update-product" method="post">
 						<div class="form-group">
 							<label for="newProdName">Name</label>
 							<input type="text" id="newProdName" name="newProdName" class="form-control">
@@ -67,15 +73,15 @@
 						</div>
 						<input type="file" name="userPhoto" />
 						<input type="hidden" name="_csrf" value="{{ csrfToken }}">
-						<input type="hidden" name="_id" value="">
-						<button type="submit" class="btn btn-primary">Submit Item</button>
-						<span id = "status"></span>
+						<input type="hidden" id="Id" name="id" value="">
+						<button type="submit" class="btn btn-success">Submit Update</button>
+						<span class="status"></span>
 						<br>
 						<img id="preview" src="">
 					</form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
         </div>
       </div>
       

@@ -18,15 +18,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
     <script type="text/javascript">
-      $("#upload").submit(function() {
-        $("#status").empty().text("File is uploading");
+      $(".upload").submit(function() {
+        $(".status").empty().text("File is uploading");
         $(this).ajaxSubmit({
           error: function(xhr) {
             status('Error: ' + xhr.status);
           },
           success: function(response) {
-            console.log(response);
-            $("#status").empty().text("Uploaded successfully");
+            $(".status").empty().text("Uploaded successfully");
             $("#preview").attr("src", "./../../images/" + response);
           }
         });
@@ -64,6 +63,10 @@
       $(".edit").on("click", function() {
         //find children with the info (title, description, price, id)
         //and set them to the ones in the modal for editing
+        $(".modal-body").find("#newProdName").val($(this).find(".title").html());
+        $(".modal-body").find("#newProdDesc").val($(this).find(".description").html());
+        $(".modal-body").find("#newProdPrice").val($(this).find(".price").html());
+        $(".modal-body").find("#Id").val($(this).find(".prodId").html());
       });
 
       function searchFunction() {

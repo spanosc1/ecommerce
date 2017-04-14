@@ -39,7 +39,6 @@ router.post('/add-product', isAdmin, function(req, res, next) {
 		if(err) {
 			return res.send(err);
 		}
-		console.log(req.body);
 		var product = new Product({
 			imagePath: '/images/' + fileName,
 			title: req.body.prodName,
@@ -49,6 +48,25 @@ router.post('/add-product', isAdmin, function(req, res, next) {
 		product.save(function(err, result) {
 			res.send(fileName);
 		});
+	});
+});
+
+router.post('/update-product', isAdmin, function(req, res, next) {
+	upload(req, res, function(err) {
+		console.log(req.body);
+		if(err) {
+			return res.send(err);
+		}
+		Product.update({_id: req.body.id}, 
+			{
+				imagePath: '/images/' + fileName,
+				title: req.body.newProdName,
+				description: req.body.newProdDesc,
+				price: req.body.newProdPrices
+			},
+			function(err, result) {
+			res.send(fileName);
+		})
 	});
 });
 

@@ -1,10 +1,14 @@
 .thumbnail img, #preview {
-	max-height: 150px;
+	height: 150px;
 	padding: 15px;
 }
 
 .thumbnail .description {
 	color: #7f7f7f;
+}
+
+.shrink {
+	margin-bottom: -40px;
 }
 
 .adminImg {
@@ -17,7 +21,9 @@
 }
 
 .editIcon {
-	position: absolute;
+	top: -30px;
+	float: right;
+	position: relative;
 	z-index: 3;
 	opacity: 0.0;
 }
