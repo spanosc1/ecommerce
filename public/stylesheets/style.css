@@ -1,5 +1,5 @@
 .thumbnail img, #preview {
-	height: 150px;
+	max-height: 150px;
 	padding: 15px;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .editIcon {
-	top: -30px;
+	top: -40px;
 	float: right;
 	position: relative;
 	z-index: 3;

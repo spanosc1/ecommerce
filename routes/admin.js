@@ -53,7 +53,7 @@ router.post('/add-product', isAdmin, function(req, res, next) {
 
 router.post('/update-product', isAdmin, function(req, res, next) {
 	upload(req, res, function(err) {
-		console.log(req.body);
+		console.log(req.body.fileName);
 		if(err) {
 			return res.send(err);
 		}
