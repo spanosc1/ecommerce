@@ -18,7 +18,7 @@ var adminRoutes = require('./routes/admin');
 
 var app = express();
 
-mongoose.connect(process.env.MONGOLAB_URI || 'localhost:27017/shoes');
+mongoose.connect('mongodb://heroku_ljw9309t:uj91e6gm977gkmo5ts75j2t531@ds161640.mlab.com:61640/heroku_ljw9309t'/* || 'localhost:27017/shoes'*/);
 require('./config/passport');
 
 // view engine setup
