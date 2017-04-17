@@ -17,7 +17,9 @@
          <input id="searchTerm" autocomplete="off" onkeyup="searchFunction()" type="text" class="form-control" placeholder="Search">
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li id="admin"></li>
+        {{#if login}}
+          <li id="admin"></li>
+        {{/if}}
         <li>
           <a href="/shopping-cart">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart

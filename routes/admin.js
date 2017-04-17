@@ -3,6 +3,9 @@ var router = express.Router();
 var csrf = require('csurf');
 var passport = require('passport');
 var multer = require('multer');
+var cloudinary = require('cloudinary');
+var fs = require('fs');
+var upload = multer();
 
 var Product = require('../models/product');
 
@@ -39,14 +42,18 @@ router.post('/add-product', isAdmin, function(req, res, next) {
 		if(err) {
 			return res.send(err);
 		}
-		var product = new Product({
-			imagePath: '/images/' + fileName,
-			title: req.body.prodName,
-			description: req.body.prodDesc,
-			price: req.body.prodPrices
-		});
-		product.save(function(err, result) {
-			res.send(fileName);
+		
+		cloudinary.uploader.upload('public/images/' + fileName, function(result) {
+			console.log(result.url);
+			var product = new Product({
+				imagePath: result.url,
+				title: req.body.prodName,
+				description: req.body.prodDesc,
+				price: req.body.prodPrices
+			});
+			product.save(function(err, result) {
+				res.send(fileName);
+			});
 		});
 	});
 });

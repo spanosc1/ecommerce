@@ -11,6 +11,8 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
 var MongoStore = require('connect-mongo')(session);
+var cloudinary = require('cloudinary');
+var fs = require('fs');
 
 var routes = require('./routes/index');
 var userRoutes = require('./routes/user');
@@ -43,6 +45,17 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.errorHandler());
+cloudinary.config(
+  {
+    cloud_name: 'hiarxttqk',
+    api_key: '799611393787453',
+    api_secret: 'uT0aew9j38-mZkk8uWXkGfoAPFc'
+  }
+);
+
+app.locals.api_key = cloudinary.config().api_key;
+app.locals.cloud_name = cloudinary.config().cloud_name;
 
 app.use(function(req, res, next) {
 	res.locals.login = req.isAuthenticated();
