@@ -30,7 +30,6 @@
           },
           success: function(response) {
             $(".status").empty().text("Uploaded successfully");
-            $("#preview").attr("src", "./../../images/" + response);
           }
         });
         return false;
