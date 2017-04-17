@@ -42,7 +42,6 @@ router.post('/add-product', isAdmin, function(req, res, next) {
 		if(err) {
 			return res.send(err);
 		}
-		
 		cloudinary.uploader.upload('public/images/' + fileName, function(result) {
 			console.log(result);
 			var product = new Product({
@@ -63,16 +62,18 @@ router.post('/update-product', isAdmin, function(req, res, next) {
 		if(err) {
 			return res.send(err);
 		}
-		Product.update({_id: req.body.id}, 
+		cloudinary.uploader.upload('public/images/' + fileName, function(result) {
+			Product.update({_id: req.body.id}, 
 			{
-				imagePath: '/images/' + fileName,
+				imagePath: result.secure_url,
 				title: req.body.newProdName,
 				description: req.body.newProdDesc,
 				price: req.body.newProdPrices
 			},
 			function(err, result) {
-			res.send(fileName);
-		})
+				res.send(fileName);
+			})
+		});
 	});
 });
 
