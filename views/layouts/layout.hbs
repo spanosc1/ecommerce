@@ -111,6 +111,25 @@
           }
         }
       }
+      function searchFunctionAdmin() {
+        var input, filter, ul, li, a, i;
+        input = $("#searchTermAdmin");
+        filter = input.val().toUpperCase();
+        ul = $(".itemListAdmin");
+        li = $(".itemAdmin");
+        for (i = 0; i < li.length; i++)
+        {
+          titles = li[i].getElementsByTagName("p")[0];
+          if(titles.innerHTML.toUpperCase().indexOf(filter) > -1)
+          {
+            li[i].style.display = "";
+          }
+          else
+          {
+            li[i].style.display = "none";
+          }
+        }
+      }
     </script>
   </body>
 </html>

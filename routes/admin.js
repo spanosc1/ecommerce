@@ -42,9 +42,7 @@ router.post('/add-product', isAdmin, function(req, res, next) {
 		if(err) {
 			return res.send(err);
 		}
-		console.log("add product route---------------------");
 		cloudinary.uploader.upload('public/images/' + fileName, function(result) {
-			console.log("uploaded image---------------------");
 			console.log(result);
 			var product = new Product({
 				imagePath: result.secure_url,
@@ -53,7 +51,6 @@ router.post('/add-product', isAdmin, function(req, res, next) {
 				price: req.body.prodPrices
 			});
 			product.save(function(err, result) {
-				console.log("saving to database---------------------");
 				res.send(fileName);
 			});
 		});

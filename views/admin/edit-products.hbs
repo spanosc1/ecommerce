@@ -26,10 +26,11 @@
 			{{/each}}
 		{{/if}}
 	</div>
-	<div class="col-md-6 col-sm-12">
+	<div class="itemListAdmin col-md-6 col-sm-12">
+		<input id="searchTermAdmin" autocomplete="off" onkeyup="searchFunctionAdmin()" type="text" class="form-control" placeholder="Search">
 		{{# if products}}
 			{{# each products}}
-				<div class="row thumbnail">
+				<div class="itemAdmin row thumbnail">
 					<div class="edit" data-toggle="modal" data-target="#myModal">
 						<div class="col-md-4 col-sm-6">
 							<img class="adminImg" src="{{this.item.imagePath}}">
