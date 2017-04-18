@@ -43,7 +43,6 @@ router.post('/add-product', isAdmin, function(req, res, next) {
 			return res.send(err);
 		}
 		cloudinary.uploader.upload('public/images/' + fileName, function(result) {
-			console.log(result);
 			var product = new Product({
 				imagePath: result.secure_url,
 				title: req.body.prodName,
@@ -62,10 +61,26 @@ router.post('/update-product', isAdmin, function(req, res, next) {
 		if(err) {
 			return res.send(err);
 		}
-		cloudinary.uploader.upload('public/images/' + fileName, function(result) {
+		if(req.body.changed == "true")
+		{
+			cloudinary.uploader.upload('public/images/' + fileName, function(result) {
+				Product.update({_id: req.body.id}, 
+				{
+					imagePath: result.secure_url,
+					title: req.body.newProdName,
+					description: req.body.newProdDesc,
+					price: req.body.newProdPrices
+				},
+				function(err, result) {
+					res.send(fileName);
+				})
+			});
+		}
+		else
+		{
 			Product.update({_id: req.body.id}, 
 			{
-				imagePath: result.secure_url,
+				imagePath: req.body.imagePath,
 				title: req.body.newProdName,
 				description: req.body.newProdDesc,
 				price: req.body.newProdPrices
@@ -73,9 +88,16 @@ router.post('/update-product', isAdmin, function(req, res, next) {
 			function(err, result) {
 				res.send(fileName);
 			})
-		});
+		}
 	});
 });
+
+router.post('/delete/:id', isAdmin, function(req, res, next) {
+	console.log(req.params.id);
+	Product.deleteOne({_id: req.params.id}, function(err, result) {
+		res.redirect('/admin/edit-products');
+	});
+})
 
 module.exports = router;
 

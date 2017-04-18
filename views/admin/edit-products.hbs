@@ -76,17 +76,24 @@
 							<label for="newProdPrice">Price</label>
 							<input type="text" id="newProdPrice" name="newProdPrices" class="form-control">
 						</div>
-						<input type="file" name="userPhoto" />
+						<input type="file" onchange="loadFileModal(event)" name="userPhoto" />
 						<input type="hidden" name="_csrf" value="{{ csrfToken }}">
 						<input type="hidden" id="Id" name="id" value="">
+						<input type="hidden" id="imagePath" name="imagePath" value="">
+						<input type="hidden" id="changed" name="changed" value="false">
+						<img id="modalPreview" src="">
+						<br>
 						<button type="submit" class="btn btn-success">Submit Update</button>
 						<span class="status"></span>
-						<br>
-						<img id="preview" src="">
 					</form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+        	<form class="delete" action="" method="post">
+        		<p class="sure">Are you sure?</p>
+        		<button type="submit" class="sure btn btn-danger">Yes</button>
+        		<p id="deleteButton" class="btn btn-danger">Delete</p>
+        		<button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+        	</form>
         </div>
       </div>
       
