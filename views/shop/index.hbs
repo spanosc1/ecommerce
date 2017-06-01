@@ -1,15 +1,74 @@
-<div class="itemList">
-  {{# each products}}
-    <div class="item">
-      <a class="productLink" href="/product/{{ this.item._id }}" role="button">
-        <img src="{{ this.item.imagePath }}" alt="..." class="img-responsive">
-        <h3 class="title">{{ this.item.title }}</h3>
-      </a>
-      <hr>
-      <div class="clearfix">
-        <div class="price pull-left">${{ this.item.price }}</div>
-        <div class="addToCart pull-right"><a class="btn btn-primary" href="/add-to-cart/{{ this.item._id }}" role="button">Add to Cart</a></div>
+<div class="row">
+  <div class="col-md-3">
+    <p id="categories">Categories</p>
+  </div>
+  <div class="col-md-8 col-sm-12">
+    <input autocomplete="off" onkeyup="searchFunction()" id="searchTerm" type="text" class="form-control col-sm-11" placeholder="Filter">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <ul id="categoriesList" class="nav nav-pills nav-stacked">
+      <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+      <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+      <li><a href="#">Menu 2</a></li>
+      <li><a href="#">Menu 3</a></li>
+    </ul>
+  </div>
+  <div class="col-md-10 col-sm-12">
+      <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+          <div class="itemList">
+            {{# each products}}
+              <div class="item">
+                <a class="productLink" href="/product/{{ this.item._id }}" role="button">
+                  <img src="{{ this.item.imagePath }}" alt="..." class="img-responsive">
+                  <h4 class="title">{{ this.item.title }}</h4>
+                </a>
+                <hr>
+                <div class="clearfix">
+                  <div class="price pull-left">${{ this.item.price }}</div>
+                  <div class="addToCart pull-right"><a class="btn btn-info addToCart" href="/add-to-cart/{{ this.item._id }}" role="button">Add to Cart</a></div>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+        <div id="menu1" class="tab-pane fade">
+          <div class="itemList">
+            {{# each products}}
+              <div class="item">
+                <a class="productLink" href="/product/{{ this.item._id }}" role="button">
+                  <img src="{{ this.item.imagePath }}" alt="..." class="img-responsive">
+                  <h4 class="title">{{ this.item.title }}</h4>
+                </a>
+                <hr>
+                <div class="clearfix">
+                  <div class="price pull-left">${{ this.item.price }}</div>
+                  <div class="addToCart pull-right"><a class="btn btn-info addToCart" href="/add-to-cart/{{ this.item._id }}" role="button">Add to Cart</a></div>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+        <div id="menu2" class="tab-pane fade">
+          <div class="itemList">
+            {{# each products}}
+              <div class="item">
+                <a class="productLink" href="/product/{{ this.item._id }}" role="button">
+                  <img src="{{ this.item.imagePath }}" alt="..." class="img-responsive">
+                  <h4 class="title">{{ this.item.title }}</h4>
+                </a>
+                <hr>
+                <div class="clearfix">
+                  <div class="price pull-left">${{ this.item.price }}</div>
+                  <div class="addToCart pull-right"><a class="btn btn-info addToCart" href="/add-to-cart/{{ this.item._id }}" role="button">Add to Cart</a></div>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
       </div>
     </div>
-  {{/each}}
+  </div>
 </div>

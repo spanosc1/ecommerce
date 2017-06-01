@@ -101,7 +101,7 @@
         li = $(".item");
         for (i = 0; i < li.length; i++)
         {
-          titles = li[i].getElementsByTagName("a")[0].getElementsByTagName("p")[0];
+          titles = li[i].getElementsByTagName("a")[0].getElementsByTagName("h4")[0];
           if(titles.innerHTML.toUpperCase().indexOf(filter) > -1)
           {
             li[i].style.display = "";
@@ -112,6 +112,12 @@
           }
         }
       }
+
+      $(".categoryPills").on("click", function() {
+        $(".categoryPills").removeClass("active");
+        $(this).addClass("active");
+      });
+
       function searchFunctionAdmin() {
         var input, filter, ul, li, a, i;
         input = $("#searchTermAdmin");

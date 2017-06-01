@@ -1,16 +1,16 @@
 body {
-	background-color: #f1f1f1;
+	background-color: #eae7e3;
 	font-family: 'Oswald', sans-serif;
 }
 
 .navbar-default .navbar-nav > li > a, #brand {
-	color: #f1f1f1; /*Change active text color here*/
+	color: #eae7e3; /*Change active text color here*/
 	font-size: 16px;
 }
 
 #separator {
 	border-left: 1px;
-	border-left-color: #f1f1f1;
+	border-left-color: #eae7e3;
 	border-left-style: solid;
 	height: 35px;
 	margin-top: 7px;
@@ -21,7 +21,7 @@ body {
 }
 
 .navbar.navbar-default {
-    background-color: #97c2c1;
+    background-color: #9abcdd;
     border: 0;
     border-radius: 0px;
     -webkit-box-shadow: none;
@@ -34,12 +34,12 @@ body {
     box-shadow: none;
 }
 
-.navbar {
-	background-color: #97c2c1;
+.badge {
+	background-color: #697fa3;
 }
 
 .img-responsive, #preview, #modalPreview{
-	max-height: 180px;
+	height: 180px;
 	display: block;
 	margin: auto;
 }
@@ -65,8 +65,12 @@ body {
 	opacity: 0.0;
 }
 
+#categories {
+	font-size: 26px
+}
+
 .title {
-	height: auto;
+	min-height: 60px;
 	text-align: left;
 	vertical-align: middle;
 	font-weight: bolder;
@@ -80,10 +84,25 @@ body {
 	padding-bottom: 7px;
 }
 
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+	background-color: #9ABCDD;
+}
+
 .addToCart {
 	margin-top: -10px;
-	padding-bottom: 10px;
+	margin-bottom: 10px;
+  color: #ffffff; 
+  background-color: #9ABCDD; 
+	border: 0;
 }
+
+.addToCart:hover,
+.addToCart:focus, 
+.addToCart.active { 
+  color: #ffffff; 
+  background-color: #697fa3; 
+  border: 0;
+} 
 
 .productLink:hover {
 	text-decoration: none;
@@ -106,7 +125,7 @@ a {
 }
 
 .item {
-	width: 25%;
+	width: 30%;
 	float: left;
 	padding-left: 5px;
 	padding-right: 5px;
@@ -115,6 +134,19 @@ a {
 	border-width: 1px;
 	border-style: solid;
 	background-color: white;
+	margin: 10px;
+}
+
+#categoriesList {
+	border-radius: 0px;
+	border-color: #fefefe;
+	border-width: 1px;
+	border-style: solid;
+	background-color: white;
+}
+
+#filter {
+	font-size: 20px;
 }
 
 .sure {
@@ -122,9 +154,14 @@ a {
 	opacity: 0.0;
 }
 
-#searchTermAdmin {
-	margin-top: 10px;
+#searchTermAdmin, #searchTerm {
 	margin-bottom: 10px;
+}
+
+#searchTerm {
+	width: 300px;
+	margin-right: -65px;
+	float: right;
 }
 
 @media only screen and (max-width : 992px) {
@@ -137,5 +174,10 @@ a {
 	.title {
 		font-size: 20px;
 		height: 70px;
+	}
+	#searchTerm {
+		width: 100%;
+		margin: 0px;
+		float: none;
 	}
 }
