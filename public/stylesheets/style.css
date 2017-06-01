@@ -16,6 +16,10 @@ body {
 	margin-top: 7px;
 }
 
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #f1f1f1;
+}
+
 #brand {
 	font-size: 24px;
 }
@@ -41,7 +45,7 @@ body {
 .img-responsive, #preview, #modalPreview{
 	height: 180px;
 	display: block;
-	margin: auto;
+	margin: 5px auto 5px auto;
 }
 
 .shrink {
@@ -91,8 +95,8 @@ body {
 .addToCart {
 	margin-top: -10px;
 	margin-bottom: 10px;
-  color: #ffffff; 
-  background-color: #9ABCDD; 
+	color: #ffffff; 
+	background-color: #9ABCDD; 
 	border: 0;
 }
 
@@ -129,16 +133,17 @@ a {
 	float: left;
 	padding-left: 5px;
 	padding-right: 5px;
-	border-radius: 0px;
+	border-radius: 2px;
 	border-color: #fefefe;
 	border-width: 1px;
 	border-style: solid;
 	background-color: white;
-	margin: 10px;
+	margin-left: 20px;
+	margin-bottom: 20px;
 }
 
 #categoriesList {
-	border-radius: 0px;
+	border-radius: 5px;
 	border-color: #fefefe;
 	border-width: 1px;
 	border-style: solid;
@@ -179,5 +184,16 @@ a {
 		width: 100%;
 		margin: 0px;
 		float: none;
+	}
+	#separator {
+		border-bottom: 1px;
+		border-bottom-color: #eae7e3;
+		border-bottom-style: solid;
+		border-left: 0;
+	}
+	.item {
+		margin-left: 0px;
+		margin-top: 10px;
+		margin-bottom: 10px;
 	}
 }
