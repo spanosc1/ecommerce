@@ -10,9 +10,22 @@
 				<textarea type="text" id="prodDesc" name="prodDesc" class="form-control" rows="6"></textarea>
 			</div>
 			<div class="form-group">
-				<label for="prodPrice">Price</label>
-				<input type="text" id="prodPrice" name="prodPrices" class="form-control">
+				<label for="prodType">Type (shirts, shoes, electronics, etc.)</label>
+				<input type="text" id="prodType" name="prodType" class="form-control">
 			</div>
+			<div class="variantCol col-sm-6">
+				<div class="form-group">
+					<label for="prodVariant">Variant(size, color, etc.)</label>
+					<input type="text" id="prodVariant" name="prodVariant" class="form-control">
+				</div>
+			</div>
+			<div class="priceCol col-sm-6">
+				<div class="form-group">
+					<label for="prodPrice">Price</label>
+					<input type="text" id="prodPrice" name="prodPrices" class="form-control">
+				</div>
+			</div>
+			<a class="btn btn-info" onclick="addNewVariant()"><i class="fa fa-plus" aria-hidden="true"></i> Variant</a><p>If only 1 variant, put "default"</p>
 			<input onchange="loadFile(event)" type="file" name="userPhoto" />
 			<img id="preview" src="">
 			<br>
@@ -38,6 +51,8 @@
 						<div class="col-md-8 col-sm-6 shrink">
 							<p class="title">{{this.item.title}}</p>
 							<p class="description">{{this.item.description}}</p>
+							<p class="type">{{this.item.type}}</p>
+							<p class="variant">{{this.item.variants}}</p>
 							<p class="price">{{this.item.price}}</p>
 							<p class="prodId">{{this.item._id}}</p>
 							<i class="fa fa-pencil-square-o fa-2x editIcon" aria-hidden="true">Edit</i>
@@ -65,28 +80,35 @@
         </div>
         <div class="modal-body">
           <form class="upload" enctype="multipart/form-data" action="/admin/update-product" method="post">
-						<div class="form-group">
-							<label for="newProdName">Name</label>
-							<input type="text" id="newProdName" name="newProdName" class="form-control">
-						</div>
-						<div class="form-group">
-							<label for="newProdDesc">Description</label>
-							<textarea type="text" id="newProdDesc" name="newProdDesc" class="form-control" rows="6"></textarea>
-						</div>
-						<div class="form-group">
-							<label for="newProdPrice">Price</label>
-							<input type="text" id="newProdPrice" name="newProdPrices" class="form-control">
-						</div>
-						<input type="file" onchange="loadFileModal(event)" name="userPhoto" />
-						<input type="hidden" name="_csrf" value="{{ csrfToken }}">
-						<input type="hidden" id="Id" name="id" value="">
-						<input type="hidden" id="imagePath" name="imagePath" value="">
-						<input type="hidden" id="changed" name="changed" value="false">
-						<img id="modalPreview" src="">
-						<br>
-						<button type="submit" class="btn btn-success">Submit Update</button>
-						<span class="status"></span>
-					</form>
+			<div class="form-group">
+				<label for="newProdName">Name</label>
+				<input type="text" id="newProdName" name="newProdName" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="newProdDesc">Description</label>
+				<textarea type="text" id="newProdDesc" name="newProdDesc" class="form-control" rows="6"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="newProdType">Type (shirts, shoes, electronics, etc.)</label>
+				<input type="text" id="newProdType" name="newProdType" class="form-control">
+			</div>
+			<div class="newVariantCol col-sm-6">
+				
+			</div>
+			<div class="newPriceCol col-sm-6">
+				
+			</div>
+			<a class="btn btn-info" onclick="newAddNewVariant()"><i class="fa fa-plus" aria-hidden="true"></i> Variant</a><p>If only 1 variant, put "default"</p>
+			<input type="file" onchange="loadFileModal(event)" name="userPhoto" />
+			<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+			<input type="hidden" id="Id" name="id" value="">
+			<input type="hidden" id="imagePath" name="imagePath" value="">
+			<input type="hidden" id="changed" name="changed" value="false">
+			<img id="modalPreview" src="">
+			<br>
+			<button type="submit" class="btn btn-success">Submit Update</button>
+			<span class="status"></span>
+		  </form>
         </div>
         <div class="modal-footer">
         	<form class="delete" action="" method="post">

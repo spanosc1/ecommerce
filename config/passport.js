@@ -14,11 +14,15 @@ passport.deserializeUser(function(id, done) {
 
 passport.use('local.signup', new LocalStrategy({
 	usernameField: 'email',
+	firstnameField: 'firstName',
+	lastnameField: 'lastName',
 	passwordField: 'password',
 	passReqToCallback: true
 }, function(req, email, password, done) {
 	req.checkBody('email', 'Invalid email').notEmpty().isEmail();
 	req.checkBody('password', 'Invalid password').notEmpty().isLength({min:4});
+	req.checkBody('firstName', 'Please enter your first name').notEmpty();
+	req.checkBody('lastName', 'Please enter your last name').notEmpty();
 	var errors = req.validationErrors();
 	if(errors) {
 		var messages = [];
@@ -37,6 +41,8 @@ passport.use('local.signup', new LocalStrategy({
 		var newUser = new User();
 		newUser.email = email;
 		newUser.password = newUser.encryptPassword(password);
+		newUser.firstName = req.body.firstName;
+		newUser.lastName = req.body.lastName;
 		newUser.save(function(err, result) {
 			if(err) {
 				return done(err);
@@ -72,6 +78,8 @@ passport.use('local.signin', new LocalStrategy({
 		if (!user.validPassword(password)) {
 			return done(null, false, {message: 'Incorrect password.'});
 		}
+		req.session.firstName = user.firstName;
+		req.session.lastName = user.lastName;
 		return done(null, user);
 	});
 }));

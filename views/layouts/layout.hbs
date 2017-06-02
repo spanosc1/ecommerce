@@ -87,7 +87,7 @@
         //and set them to the ones in the modal for editing
         $(".modal-body").find("#newProdName").val($(this).find(".title").html());
         $(".modal-body").find("#newProdDesc").val($(this).find(".description").html());
-        $(".modal-body").find("#newProdPrice").val($(this).find(".price").html());
+        $(".modal-body").find("#newProdType").val($(this).find(".type").html());
         $(".modal-body").find("#Id").val($(this).find(".prodId").html());
         $(".delete").attr("action", "/admin/delete/" + $(this).find(".prodId").html());
         $("#imagePath").attr("value", $(this).find(".adminImg").attr("src"));
@@ -136,6 +136,36 @@
             li[i].style.display = "none";
           }
         }
+      }
+
+      function addNewVariant() {
+        $(".variantCol").append(
+          '<div class="form-group">' + 
+            '<label for="prodVariant">Variant</label>' + 
+            '<input type="text" id="prodVariant" name="prodVariant" class="form-control">' + 
+          '</div>'
+        );
+        $(".priceCol").append(
+          '<div class="form-group">' + 
+            '<label for="prodPrice">Price</label>' + 
+            '<input type="text" id="prodPrice" name="prodPrices" class="form-control">' + 
+          '</div>'
+        );
+      }
+
+      function newAddNewVariant() {
+        $(".modal-body").find(".newVariantCol").append(
+          '<div class="form-group">' + 
+            '<label for="newProdVariant">Variant</label>' + 
+            '<input type="text" id="newProdVariant" name="newProdVariant" class="form-control">' + 
+          '</div>'
+        );
+        $(".modal-body").find(".newPriceCol").append(
+          '<div class="form-group">' + 
+            '<label for="newProdPrice">Price</label>' + 
+            '<input type="text" id="newProdPrice" name="newProdPrices" class="form-control">' + 
+          '</div>'
+        );
       }
     </script>
   </body>

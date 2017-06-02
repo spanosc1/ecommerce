@@ -43,12 +43,14 @@ router.post('/add-product', isAdmin, function(req, res, next) {
 			return res.send(err);
 		}
 		cloudinary.uploader.upload('public/images/' + fileName, function(result) {
-			console.log(result);
+			console.log(req.body);
 			var product = new Product({
 				imagePath: result.secure_url,
 				title: req.body.prodName,
 				description: req.body.prodDesc,
-				price: req.body.prodPrices
+				variants: req.body.prodVariant,
+				price: req.body.prodPrices,
+				type: req.body.prodType
 			});
 			product.save(function(err, result) {
 				res.send(fileName);
