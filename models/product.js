@@ -6,9 +6,10 @@ var schema = new Schema({
 	extraImages: {type: Array, required: false},
 	title: {type: String, required: true},
 	description: {type: String, required: true},
-	price: {type: Array, required: true},
+	price: {type: Number, required: true},
 	type: {type: String, required: true},
-	variants: {type: Array, required: false}
+	sizes: {type: Array, required: false},
+	colors: {type: Array, required: false}
 });
 
 module.exports = mongoose.model('Product', schema);
